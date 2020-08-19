@@ -3,7 +3,7 @@ package parser;
 
 import Log.Log;
 import codegenerator.CodeGenerator;
-import errorHandler.ErrorHandler;
+import errorhandler.ErrorHandler;
 import scanner.lexicalAnalyzer;
 import scanner.token.Token;
 
