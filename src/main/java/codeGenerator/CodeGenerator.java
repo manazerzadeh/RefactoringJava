@@ -27,7 +27,7 @@ public class CodeGenerator {
     {
         memory.pintCodeBlock();
     }
-    public void semanticFunction(int func, Token next) {
+    public void semanticFunction(int func, Token next) throws Exception {
         Log.print("codegenerator : " + func);
         switch (func) {
             case 0:
@@ -131,6 +131,8 @@ public class CodeGenerator {
             case 33:
                 defMain();
                 break;
+            default:
+                throw new Exception("semantic Function Error");
         }
     }
 
