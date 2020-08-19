@@ -151,10 +151,10 @@ public class CodeGenerator {
     //    public void spid(Token next){
 //        symbolStack.push(next.value);
 //    }
-    public void checkID() {
+    public void checkID() throws Exception {
         symbolStack.pop();
         if (ss.peek().varType == VarType.Non) {
-            //TODO : error
+            throw new Exception("ID error");
         }
     }
 
