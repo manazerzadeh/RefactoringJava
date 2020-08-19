@@ -1,6 +1,5 @@
 package semantic.symbol;
 
-
 import codegenerator.Address;
 import codegenerator.Memory;
 import codegenerator.TypeAddress;
