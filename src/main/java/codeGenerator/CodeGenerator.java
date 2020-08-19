@@ -173,6 +173,8 @@ public class CodeGenerator {
                     case Int:
                         t = VarType.Int;
                         break;
+                    default:
+                        throw new Exception();
                 }
                 ss.push(new Address(s.address, t));
 
@@ -188,7 +190,7 @@ public class CodeGenerator {
         symbolStack.push(next.value);
     }
 
-    public void fpid() {
+    public void fpid() throws Exception {
         ss.pop();
         ss.pop();
 
@@ -201,6 +203,8 @@ public class CodeGenerator {
             case Int:
                 t = VarType.Int;
                 break;
+            default:
+                throw new Exception();
         }
         ss.push(new Address(s.address, t));
 
@@ -234,7 +238,9 @@ public class CodeGenerator {
         try {
             symbolTable.getNextParam(className, methodName);
             ErrorHandler.printError("The few argument pass for method");
-        } catch (IndexOutOfBoundsException e) {}
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
             VarType t = VarType.Int;
             switch (symbolTable.getMethodReturnType(className, methodName))
             {
