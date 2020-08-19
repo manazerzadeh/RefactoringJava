@@ -14,6 +14,6 @@ public class ImidiateAddress extends Address {
 
 
     public String toString(){
-        return "#"+num;
+        return "#"+ getNum();
     }
 }
