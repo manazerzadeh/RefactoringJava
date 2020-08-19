@@ -1,17 +1,17 @@
 package parser;
 
 
+import Log.Log;
+import codegenerator.CodeGenerator;
+import errorHandler.ErrorHandler;
+import scanner.lexicalAnalyzer;
+import scanner.token.Token;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Stack;
-
-import Log.Log;
-import codeGenerator.CodeGenerator;
-import errorHandler.ErrorHandler;
-import scanner.lexicalAnalyzer;
-import scanner.token.Token;
 
 
 public class Parser {
