@@ -304,35 +304,28 @@ public class CodeGenerator {
     }
 
     public void add() {
-        Address temp = new Address(memory.getTemp(), VarType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-
-        if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
-            ErrorHandler.printError("In add two operands must be integer");
-        }
+        ArithmeticExtractor arithmeticExtractor = new ArithmeticExtractor().invoke();
+        Address s1 = arithmeticExtractor.getS1();
+        Address s2 = arithmeticExtractor.getS2();
+        Address temp = arithmeticExtractor.getTemp();
         memory.add3AddressCode(Operation.ADD, s1, s2, temp);
         ss.push(temp);
     }
 
     public void sub() {
-        Address temp = new Address(memory.getTemp(), VarType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-        if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
-            ErrorHandler.printError("In sub two operands must be integer");
-        }
+        ArithmeticExtractor arithmeticExtractor = new ArithmeticExtractor().invoke();
+        Address s1 = arithmeticExtractor.getS1();
+        Address s2 = arithmeticExtractor.getS2();
+        Address temp = arithmeticExtractor.getTemp();
         memory.add3AddressCode(Operation.SUB, s1, s2, temp);
         ss.push(temp);
     }
 
     public void mult() {
-        Address temp = new Address(memory.getTemp(), VarType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-        if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
-            ErrorHandler.printError("In mult two operands must be integer");
-        }
+        ArithmeticExtractor arithmeticExtractor = new ArithmeticExtractor().invoke();
+        Address s1 = arithmeticExtractor.getS1();
+        Address s2 = arithmeticExtractor.getS2();
+        Address temp = arithmeticExtractor.getTemp();
         memory.add3AddressCode(Operation.MULT, s1, s2, temp);
 //        memory.saveMemory();
         ss.push(temp);
@@ -503,4 +496,32 @@ public class CodeGenerator {
 
     }
 
+    private class ArithmeticExtractor {
+        private Address temp;
+        private Address s2;
+        private Address s1;
+
+        public Address getTemp() {
+            return temp;
+        }
+
+        public Address getS2() {
+            return s2;
+        }
+
+        public Address getS1() {
+            return s1;
+        }
+
+        public ArithmeticExtractor invoke() {
+            temp = new Address(memory.getTemp(), VarType.Int);
+            s2 = ss.pop();
+            s1 = ss.pop();
+
+            if (s1.varType != VarType.Int || s2.varType != VarType.Int) {
+                ErrorHandler.printError("two operands must be integer");
+            }
+            return this;
+        }
+    }
 }
